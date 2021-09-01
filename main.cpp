@@ -52,10 +52,10 @@ int isInMandelbrot(std::complex<double> c) {
 void fillMandelbrot(std::array<int, FILE_SIZE> &data) {
     for (int i = 0; i < HEIGHT; ++i) {
         for (int j = 0; j < WIDTH; ++j) {
-            double dx = (720 - j) * SCALE_FACTOR;
-            double dy = (320 - i) * SCALE_FACTOR;
+            double dx = (j - 720) * SCALE_FACTOR;
+            double dy = (i - 320) * SCALE_FACTOR;
             std::complex<double> number = std::complex(dx, dy);
-            const unsigned char intensity = isInMandelbrot(-number);
+            const unsigned char intensity = isInMandelbrot(number);
             auto n = (double)intensity;
             double a = 0.1;
             // Stolen from https://github.com/OneLoneCoder/olcPixelGameEngine/blob/5764bbab19efd52b9dfa4144390c9f47edfe7dc3/Videos/OneLoneCoder_PGE_Mandelbrot.cpp#L543
